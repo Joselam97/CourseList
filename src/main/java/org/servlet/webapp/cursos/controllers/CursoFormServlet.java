@@ -15,7 +15,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
 
-@WebServlet("/curso/form")
+@WebServlet("/cursos/form")
 public class CursoFormServlet extends HttpServlet {
 
     @Override
