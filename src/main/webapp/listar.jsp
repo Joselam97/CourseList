@@ -1,18 +1,15 @@
-<%@page contentType="UTF-8" import="java.util.*, org.servlet.webapp.cursos.model.*"%>
-<%
-List<Curso> cursos = (List<Curso>) request.getAttribute("cursos");
-String titulo = (String) request.getAttribute("titulo");
-%>
+<%@page contentType="text/html" pageEncoding="UTF-8" import="java.time.format.*"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html lang="en">
    <head>
       <meta charset="UTF-8">
-      <title><%=titulo%></title>
+      <title>${titulo}</title>
    </head>
    <body>
-      <h1><%=titulo%></h1>
-      <p><a href="<%=request.getContextPath()%>/cursos/form">Crear [+]</a></p>
-      <form action="<%=request.getContextPath()%>/cursos/buscar" method="post">
+      <h1>${titulo}</h1>
+      <p><a href="${pageContext.request.contextPath}/cursos/form">Crear [+]</a></p>
+      <form action="${pageContext.request.contextPath}/cursos/buscar" method="post">
             <input type="text" name="nombre">
             <input type="submit" value="Buscar">
       </form>
@@ -25,17 +22,17 @@ String titulo = (String) request.getAttribute("titulo");
             <th>editar</th>
             <th>eliminar</th>
          </tr>
-         <%for (Curso c : cursos){%>
+         <c:forEach items="${cursos}" var="c">
          <tr>
-            <td><%=c.getId()%></td>
-            <td><%=c.getNombre()%></td>
-            <td><%=c.getInstructor()%></td>
-            <td><%=c.getDuracion()%></td>
-            <td><a href="<%=request.getContextPath()%>/cursos/form?id=<%=c.getId()%>">Editar</a></td>
+            <td>${c.id}</td>
+            <td>${c.nombre}</td>
+            <td>${c.instructor}</td>
+            <td>${c.duracion}</td>
+            <td><a href="${pageContext.request.contextPath}/cursos/form?id=${c.id}">Editar</a></td>
             <td><a onclick="return confirm('esta seguro que desea eliminar?');"
-            href="<%=request.getContextPath()%>/cursos/eliminar?id=<%=c.getId()%>">Eliminar</a></td>
+            href="${pageContext.request.contextPath}/cursos/eliminar?id=${c.id}">Eliminar</a></td>
          </tr>
-         <%}%>
+         </c:forEach>
       </table>
    </body>
 </html>
