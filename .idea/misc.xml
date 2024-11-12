@@ -11,6 +11,12 @@
       </list>
     </option>
   </component>
+  <component name="ProjectResources">
+    <resource url="http://java.sun.com/xml/ns/j2ee" location="$PROJECT_DIR$" />
+    <resource url="http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd" location="$PROJECT_DIR$/.." />
+    <resource url="http://www.w3.org/2001/XMLSchema-instance" location="$PROJECT_DIR$" />
+    <resource url="https://www.w3.org/2001/xml.xsd" location="$PROJECT_DIR$" />
+  </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_17" default="true" project-jdk-name="17" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/out" />
   </component>

@@ -1,27 +1,19 @@
 package org.servlet.webapp.cursos.util;
 
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
+import javax.sql.DataSource;
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class ConexionJDBC {
-
-
-
-    private static String url = "jdbc:mysql://localhost:3306/java_curso?serverTimezone=UTC";
-    private static String username = "root";
-    private static String password = "SYSTEM";
-
-    public static Connection getConnection() throws SQLException {
-        return DriverManager.getConnection(url, username, password);
-    }
-
-    static {
-        try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        }
+    public static Connection getConnection() throws SQLException, NamingException {
+        Context initContext = null;
+        initContext = new InitialContext();
+        Context envContext = (Context) initContext.lookup("java:/comp/env");
+        DataSource ds = (DataSource) envContext.lookup("jdbc/mysqlDB");
+        return ds.getConnection();
     }
 }
 
