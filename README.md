@@ -28,3 +28,21 @@ A Jakarta EE-based web application to manage a list of courses, allowing users t
 1. **Clone the Repository**:
    ```bash
    git clone https://github.com/Joselam97/CourseList.git
+
+2. **Navigate to the Project Directory**:
+   ```bash
+   cd Shopping-Cart
+
+3. **Set up the SQL Database**:
+- Import the provided .sql tables located in the resources directory into MySQL.
+- Update the database connection settings in the project configuration to match your MySQL credentials.
+
+4. **Build the Project with Maven**:
+   ```bash
+   mvn clean install
+
+5. **Deploy the Application**:
+- Deploy the project on a Jakarta EE Tomcat server.
+
+6. **Access the Application**:
+- Open a web browser and access the application via your server's URL.
