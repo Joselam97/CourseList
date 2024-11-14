@@ -1,17 +1,18 @@
 package org.servlet.webapp.cursos.repository;
 
+import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.inject.Inject;
 import org.servlet.webapp.cursos.model.Curso;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+@ApplicationScoped
 public class CursoRepositorioImpl implements Repositorio<Curso> {
 
+    @Inject
     private Connection conn;
 
-    public CursoRepositorioImpl(Connection conn) {
-        this.conn = conn;
-    }
 
     @Override
     public List<Curso> listar() throws SQLException {
@@ -78,7 +79,6 @@ public class CursoRepositorioImpl implements Repositorio<Curso> {
             }
             stmt.executeUpdate();
         }
-
     }
 
     @Override

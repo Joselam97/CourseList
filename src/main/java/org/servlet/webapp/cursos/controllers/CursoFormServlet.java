@@ -1,5 +1,6 @@
 package org.servlet.webapp.cursos.controllers;
 
+import jakarta.inject.Inject;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -7,10 +8,8 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.servlet.webapp.cursos.model.Curso;
 import org.servlet.webapp.cursos.service.CursoService;
-import org.servlet.webapp.cursos.service.CursoServiceImpl;
 
 import java.io.IOException;
-import java.sql.Connection;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
@@ -18,11 +17,12 @@ import java.util.Optional;
 @WebServlet("/cursos/form")
 public class CursoFormServlet extends HttpServlet {
 
+    @Inject
+    private CursoService service;
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        Connection conn = (Connection) req.getAttribute("conn");
-        CursoService service = new CursoServiceImpl(conn);
         long id;
 
         try{
@@ -44,11 +44,10 @@ public class CursoFormServlet extends HttpServlet {
         getServletContext().getRequestDispatcher("/form.jsp").forward(req,resp);
     }
 
+
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        Connection conn = (Connection) req.getAttribute("conn");
-        CursoService service = new CursoServiceImpl(conn);
         String nombre = req.getParameter("nombre");
         String descripcion = req.getParameter("descripcion");
         String instructor = req.getParameter("instructor");

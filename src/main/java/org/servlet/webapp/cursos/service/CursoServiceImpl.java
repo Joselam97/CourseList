@@ -1,20 +1,21 @@
 package org.servlet.webapp.cursos.service;
 
+import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.inject.Inject;
+import org.servlet.webapp.cursos.interceptors.TransactionalJDBC;
 import org.servlet.webapp.cursos.model.Curso;
 import org.servlet.webapp.cursos.repository.CursoRepositorioImpl;
 
-import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.Optional;
 
+@ApplicationScoped
 public class CursoServiceImpl implements CursoService{
 
+    @Inject
     private CursoRepositorioImpl repository;
 
-    public CursoServiceImpl(Connection connection) {
-        this.repository = new CursoRepositorioImpl(connection);
-    }
 
     @Override
     public List<Curso> listar() {
@@ -44,6 +45,7 @@ public class CursoServiceImpl implements CursoService{
     }
 
     @Override
+    @TransactionalJDBC
     public void guardar(Curso curso) {
         try{
             repository.guardar(curso);
@@ -53,6 +55,7 @@ public class CursoServiceImpl implements CursoService{
     }
 
     @Override
+    @TransactionalJDBC
     public void eliminar(Long id) {
         try{
             repository.eliminar(id);
