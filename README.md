@@ -31,7 +31,7 @@ A Jakarta EE-based web application to manage a list of courses, allowing users t
 
 2. **Navigate to the Project Directory**:
    ```bash
-   cd Shopping-Cart
+   cd CourseList
 
 3. **Set up the SQL Database**:
 - Import the provided .sql tables located in the resources directory into MySQL.
