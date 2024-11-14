@@ -31,6 +31,7 @@ public class TransactionalInterceptor {
                     " de la clase " + invocation.getMethod().getDeclaringClass());
 
             Object resultado = invocation.proceed();
+            conn.commit();
 
             log.info(" ------> Realizando Commit y Finalizando Transaccion " + invocation.getMethod().getName() +
                     " de la clase " + invocation.getMethod().getDeclaringClass());
