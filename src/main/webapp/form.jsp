@@ -1,9 +1,13 @@
 <%@page contentType="text/html" pageEncoding="UTF-8" import="java.time.format.*"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <jsp:include page="layout/header.jsp" />
+
 <h1>${titulo}</h1>
+
 <p><a href="${pageContext.request.contextPath}/cursos" class="btn btn-light">volver</a></p>
+
 <form action="${pageContext.request.contextPath}/cursos/form" method="post">
+
     <div class="row mb-2">
         <label for="nombre" class="col-form-label col-sm-2">Nombre</label>
         <div class="col-sm-4">
@@ -13,6 +17,7 @@
             <div style="color:red;">${errores.nombre}</div>
         </c:if>
     </div>
+
     <div class="row mb-2">
         <label for="instructor" class="col-form-label col-sm-2">Instructor</label>
         <div class="col-sm-4">
@@ -22,6 +27,7 @@
             <div style="color:red;">${errores.instructor}</div>
         </c:if>
     </div>
+
     <div class="row mb-2">
         <label for="duracion" class="col-form-label col-sm-2">Duracion</label>
         <div class="col-sm-4">
@@ -31,6 +37,7 @@
             <div style="color:red;">${errores.duracion}</div>
         </c:if>
     </div>
+
     <div class="row mb-2">
         <label for="descripcion" class="col-form-label col-sm-2">Descripción</label>
         <div class="col-sm-4">
@@ -40,9 +47,11 @@
             <div style="color:red;">${errores.descripcion}</div>
         </c:if>
     </div>
+
     <div class="row mb-6">
         <div><input type="submit" value="${curso.id!=null && curso.id>0? "Editar": "Crear"}" class="btn btn-primary"></div>
     </div>
     <input type="hidden" name="id" value="${curso.id}">
+
 </form>
 <jsp:include page="layout/footer.jsp" />

@@ -1,5 +1,6 @@
 package org.servlet.webapp.cursos.model;
 
+// This class represents a "Curso" (Course) entity with various properties
 public class Curso {
     private Long id;
     private String nombre;
